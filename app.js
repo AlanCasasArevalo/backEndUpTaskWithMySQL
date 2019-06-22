@@ -1,11 +1,19 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+require('./models/Projects');
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 var routes = require('./routes');
+const db = require('./config/db');
+db.sync()
+    .then( () => {
+      console.log('Conectado OK a la base de datos.')
+    })
+    .catch(error => console.log(error));
 
 var app = express();
 
