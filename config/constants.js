@@ -29,7 +29,7 @@ var constants = {
         },
     },
     PROJECT_CONTROLLER: {
-        PROJECT_HOME_MESSAGE: 'Home OK',
+        PROJECT_HOME_MESSAGE: 'Todos los proyectos',
         PAGE_NAME_HOME_MESSAGE: 'Projects',
         PROJECT_NEW_PROJECT_MESSAGE: 'Nuevo projecto',
         PAGE_NEW_PROJECT_HOME_MESSAGE: 'New project',
