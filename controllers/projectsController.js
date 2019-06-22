@@ -14,3 +14,10 @@ exports.projectsNewProjects = (req, res) => {
         pageName: _constants.PROJECT_CONTROLLER.PAGE_NEW_PROJECT_HOME_MESSAGE
     })
 };
+
+exports.newProject = (req, res) => {
+    res.status(_constants.HTTP.CODE.OK).json({
+        ok : true,
+        message: _constants.PROJECT_CONTROLLER.NEW_PROJECT_MESSAGE,
+    })
+};

@@ -33,6 +33,7 @@ var constants = {
         PAGE_NAME_HOME_MESSAGE: 'Projects',
         PROJECT_NEW_PROJECT_MESSAGE: 'Nuevo projecto',
         PAGE_NEW_PROJECT_HOME_MESSAGE: 'New project',
+        NEW_PROJECT_MESSAGE: 'Enviaste el formulario satisfactoriamente',
     }
 };
 
