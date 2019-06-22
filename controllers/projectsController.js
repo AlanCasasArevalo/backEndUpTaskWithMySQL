@@ -1,13 +1,16 @@
 exports.projectsHome = (req, res) => {
-    res.status(200).json({
+
+    res.status(_constants.HTTP.CODE.OK).json({
         ok : true,
-        message: 'Home OK'
+        message: _constants.PROJECT_CONTROLLER.PROJECT_HOME_MESSAGE,
+        pageName: _constants.PROJECT_CONTROLLER.PAGE_NAME_HOME_MESSAGE
     })
 };
 
-exports.projectUs = (req, res) => {
-    res.status(200).json({
+exports.projectsNewProjects = (req, res) => {
+    res.status(_constants.HTTP.CODE.OK).json({
         ok : true,
-        message: 'Sobre nosotros OK'
+        message: _constants.PROJECT_CONTROLLER.PROJECT_NEW_PROJECT_MESSAGE,
+        pageName: _constants.PROJECT_CONTROLLER.PAGE_NEW_PROJECT_HOME_MESSAGE
     })
 };

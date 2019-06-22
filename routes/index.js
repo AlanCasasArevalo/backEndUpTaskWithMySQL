@@ -4,7 +4,7 @@ const projectsController = require('../controllers/projectsController');
 
 module.exports = function () {
   router.get('/', projectsController.projectsHome );
-  router.get('/us', projectsController.projectUs );
+  router.get('/new-projects', projectsController.projectsNewProjects );
 
   return router
 };

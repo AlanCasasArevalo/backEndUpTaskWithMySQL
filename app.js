@@ -8,6 +8,10 @@ var routes = require('./routes');
 
 var app = express();
 
+global._constants = require('./config/constants');
+
+app.use(express.static('public'));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
