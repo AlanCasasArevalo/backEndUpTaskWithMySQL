@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon ./index.js",
+    "dev": "nodemon ./app.js",
     "start": "concurrently \"npm run dev\" \"npm run watch\"",
     "watch": "webpack --w --mode development"
   },
