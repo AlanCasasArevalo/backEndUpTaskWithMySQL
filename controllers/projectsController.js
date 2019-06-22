@@ -30,7 +30,7 @@ exports.newProject = async (req, res) => {
 
     if (errors.length > 0) {
         res.status(_constants.HTTP.CODE.BAD_REQUEST).json({
-            message: _constants.HTTP.MESSAGE.BAD_REQUEST
+            errors
         })
     } else {
         // No errores insertar en la base de datos
