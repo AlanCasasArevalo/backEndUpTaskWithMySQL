@@ -12,7 +12,13 @@ module.exports = function () {
   );
 
   router.get('/projects/:url', projectsController.projectByUrl );
-  router.get('/projects/edit/:id', projectsController.projectById );
+
+  router.get('/projects/edit/:id', projectsController.editForm );
+
+  router.post('/new-projects/:id',
+      // body('name').not().isEmpty().trim().escape(),
+      projectsController.updateProject
+  );
 
   return router
 };

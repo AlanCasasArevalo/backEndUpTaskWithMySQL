@@ -51,7 +51,7 @@ exports.newProject = async (req, res) => {
         });
 
         if (project && typeof project !== 'undefined') {
-            res.status(_constants.HTTP.CODE.OK).json({
+            res.status(_constants.HTTP.CODE.CREATION_OK).json({
                 ok : true,
                 message: _constants.PROJECT_CONTROLLER.NEW_PROJECT_SUCCESS_MESSAGE,
                 project
@@ -91,7 +91,7 @@ exports.projectByUrl = async (req, res) => {
 
 };
 
-exports.projectById = async (req, res) => {
+exports.editForm = async (req, res) => {
 
     const project = await Projects.findOne({
         where: {
@@ -112,5 +112,54 @@ exports.projectById = async (req, res) => {
             message: _constants.PROJECT_CONTROLLER.PROJECT_BY_URL_OR_ID_FAIL_MESSAGE,
             project
         })
+    }
+};
+
+exports.updateProject = async (req, res) => {
+
+    const projects = await Projects.findAll();
+    const name = req.body.name;
+
+    let errors = [];
+
+    if (!name) {
+        errors.push({
+            message: _constants.PROJECT_CONTROLLER.NEW_PROJECT_ERROR_NO_NAME_MESSAGE
+        });
+    }
+
+    if (errors.length > 0) {
+        res.status(_constants.HTTP.CODE.NOT_FOUND).json({
+            ok : false,
+            message: _constants.HTTP.MESSAGE.NOT_FOUND,
+            projects
+        })
+    } else {
+
+
+        const project = await Projects.update(
+            { name },
+            { where: { id: req.params.id }}
+        );
+
+        const projectToUpdate = await Projects.findOne({
+            where: {
+                id: req.params.id
+            }
+        });
+
+        if (project && typeof project !== 'undefined') {
+            res.status(_constants.HTTP.CODE.ACCEPTED).json({
+                ok : false,
+                message: _constants.HTTP.MESSAGE.ACCEPTED,
+                projectToUpdate
+            })
+        } else {
+            res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
+                ok : false,
+                message: _constants.HTTP.MESSAGE.INTERNAL_SERVER_ERROR,
+                projectToUpdate
+            })
+        }
     }
 };

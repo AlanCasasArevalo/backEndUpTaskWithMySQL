@@ -13,8 +13,10 @@ var constants = {
         },
         CODE: {
             OK: 200,
-            CREATION_OK: 202,
+            CREATION_OK: 201,
+            ACCEPTED: 202,
             BAD_REQUEST: 400,
+            UNAUTHORIZED: 401,
             FORBIDDEN: 403,
             NOT_FOUND: 404,
             INTERNAL_SERVER_ERROR: 500
@@ -22,9 +24,11 @@ var constants = {
         MESSAGE: {
             OK: 'Ok',
             CREATION_OK: 'Created Ok',
+            ACCEPTED: 'Tu operacion ha sido realizada correctamente',
             NOT_FOUND: 'Not found',
             BAD_REQUEST: 'BAD REQUEST',
-            FORBIDDEN: 'Unauthorized',
+            UNAUTHORIZED: 'No estas autorizado ha realizar esta operacion.',
+            FORBIDDEN: 'Server refuses to give you a file, authentication wont help',
             INTERNAL_SERVER_ERROR: "Internal Server Error"
         },
     },
