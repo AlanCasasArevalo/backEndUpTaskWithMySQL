@@ -42,6 +42,9 @@ var constants = {
         DATA_BASE_PASSWORD: 'YOUR_MYSQL_KEY',
         DATA_BASE_HOST: 'localhost',
         DATA_BASE_DIALECT: 'mssql',
+        DATA_BASE_PORT: '3306',
+        DATA_BASE_OPERATORS_ALIASES: false,
+        DATA_BASE_TIME_STAMP: false,
     }
 };
 
