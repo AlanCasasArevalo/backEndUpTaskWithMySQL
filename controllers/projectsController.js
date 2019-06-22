@@ -19,6 +19,15 @@ exports.projectsNewProjects = (req, res) => {
     })
 };
 
+exports.projectByUrl = async (req, res) => {
+
+
+    res.status(_constants.HTTP.CODE.OK).json({
+        ok : true,
+        message: _constants.PROJECT_CONTROLLER.PROJECT_NEW_PROJECT_MESSAGE,
+    })
+};
+
 exports.newProject = async (req, res) => {
     const { name } = req.body;
 
