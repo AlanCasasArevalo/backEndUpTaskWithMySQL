@@ -1,11 +1,13 @@
 const Projects = require('../models/Projects');
-const slug = require("slug");
 
-exports.projectsHome = (req, res) => {
+exports.projectsHome = async (req, res) => {
+    const projects = await Projects.findAll();
+
     res.status(_constants.HTTP.CODE.OK).json({
         ok : true,
         message: _constants.PROJECT_CONTROLLER.PROJECT_HOME_MESSAGE,
-        pageName: _constants.PROJECT_CONTROLLER.PAGE_NAME_HOME_MESSAGE
+        pageName: _constants.PROJECT_CONTROLLER.PAGE_NAME_HOME_MESSAGE,
+        projects
     })
 };
 
@@ -34,10 +36,8 @@ exports.newProject = async (req, res) => {
         })
     } else {
         // No errores insertar en la base de datos
-        const url = slug(name.toLowerCase());
         const project = await Projects.create({
-            name,
-            url
+            name
         });
 
         res.status(_constants.HTTP.CODE.OK).json({
@@ -46,4 +46,19 @@ exports.newProject = async (req, res) => {
         })
     }
 
+};
+
+exports.projectByUrl = async (req, res) => {
+
+    const project = await Projects.findOne({
+        where: {
+            url: req.params.url
+        }
+    });
+
+    res.status(_constants.HTTP.CODE.OK).json({
+        ok : true,
+        message: _constants.PROJECT_CONTROLLER.PROJECT_BY_URL_SUCCESS_MESSAGE,
+        project
+    })
 };

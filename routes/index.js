@@ -11,5 +11,7 @@ module.exports = function () {
       projectsController.newProject
   );
 
+  router.get('/projects/:url', projectsController.projectByUrl );
+
   return router
 };
