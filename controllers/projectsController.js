@@ -19,15 +19,6 @@ exports.projectsNewProjects = (req, res) => {
     })
 };
 
-exports.projectByUrl = async (req, res) => {
-
-
-    res.status(_constants.HTTP.CODE.OK).json({
-        ok : true,
-        message: _constants.PROJECT_CONTROLLER.PROJECT_NEW_PROJECT_MESSAGE,
-    })
-};
-
 exports.newProject = async (req, res) => {
     const { name } = req.body;
 
@@ -55,4 +46,19 @@ exports.newProject = async (req, res) => {
         })
     }
 
+};
+
+exports.projectByUrl = async (req, res) => {
+
+    const project = await Projects.findOne({
+        where: {
+            url: req.params.url
+        }
+    });
+
+    res.status(_constants.HTTP.CODE.OK).json({
+        ok : true,
+        message: _constants.PROJECT_CONTROLLER.PROJECT_BY_URL_SUCCESS_MESSAGE,
+        project
+    })
 };
