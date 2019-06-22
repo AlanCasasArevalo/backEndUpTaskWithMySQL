@@ -34,6 +34,14 @@ var constants = {
         PROJECT_NEW_PROJECT_MESSAGE: 'Nuevo projecto',
         PAGE_NEW_PROJECT_HOME_MESSAGE: 'New project',
         NEW_PROJECT_MESSAGE: 'Enviaste el formulario satisfactoriamente',
+        NEW_PROJECT_ERROR_NO_NAME_MESSAGE: 'Tienes que agregar un nombre al campo',
+    },
+    DATA_BASE_SETUP: {
+        DATA_BASE_NAME: 'backEndUpTaskWithMySQL',
+        DATA_BASE_USERNAME: 'root',
+        DATA_BASE_PASSWORD: 'YOUR_MYSQL_KEY',
+        DATA_BASE_HOST: 'localhost',
+        DATA_BASE_DIALECT: 'mssql',
     }
 };
 
