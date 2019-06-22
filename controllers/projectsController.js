@@ -164,7 +164,7 @@ exports.updateProject = async (req, res) => {
     }
 };
 
-exports.deleteProject = async (req, res) => {
+exports.deleteProject = async (req, res, next) => {
 
     const project = await Projects.findOne({
         where: {
@@ -188,11 +188,7 @@ exports.deleteProject = async (req, res) => {
                 project
             })
         } else {
-            res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
-                ok : false,
-                message: _constants.HTTP.MESSAGE.INTERNAL_SERVER_ERROR,
-                result
-            })
+            return next()
         }
     } else {
         res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
