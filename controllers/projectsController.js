@@ -1,5 +1,7 @@
-exports.projectsHome = (req, res) => {
+const Projects = require('../models/Projects');
+const slug = require("slug");
 
+exports.projectsHome = (req, res) => {
     res.status(_constants.HTTP.CODE.OK).json({
         ok : true,
         message: _constants.PROJECT_CONTROLLER.PROJECT_HOME_MESSAGE,
@@ -15,7 +17,7 @@ exports.projectsNewProjects = (req, res) => {
     })
 };
 
-exports.newProject = (req, res) => {
+exports.newProject = async (req, res) => {
     const { name } = req.body;
 
     let errors = [];
@@ -32,6 +34,12 @@ exports.newProject = (req, res) => {
         })
     } else {
         // No errores insertar en la base de datos
+        const url = slug(name.toLowerCase());
+        const project = await Projects.create({
+            name,
+            url
+        });
+
         res.status(_constants.HTTP.CODE.OK).json({
             ok : true,
             message: _constants.PROJECT_CONTROLLER.NEW_PROJECT_MESSAGE,
