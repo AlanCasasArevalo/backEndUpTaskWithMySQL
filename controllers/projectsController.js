@@ -1,5 +1,4 @@
 const Projects = require('../models/Projects');
-const slug = require("slug");
 
 exports.projectsHome = (req, res) => {
     res.status(_constants.HTTP.CODE.OK).json({
@@ -34,9 +33,7 @@ exports.newProject = async (req, res) => {
         })
     } else {
         // No errores insertar en la base de datos
-        const url = slug(name.toLowerCase());
         const project = await Projects.create({
-            name,
             url
         });
 
