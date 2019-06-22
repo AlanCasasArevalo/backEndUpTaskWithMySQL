@@ -1,13 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-require('./models/Projects');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const expressValidator = require('express-validator');
+const helpers = require('./helpers/helper');
 
 
-var routes = require('./routes');
+require('./models/Projects');
+const routes = require('./routes');
 const db = require('./config/db');
 db.sync()
     .then( () => {
@@ -15,10 +17,11 @@ db.sync()
     })
     .catch(error => console.log(error));
 
-var app = express();
+const app = express();
 
 global._constants = require('./config/constants');
 
+app.use(expressValidator());
 app.use(express.static('public'));
 
 app.use(logger('dev'));
@@ -27,8 +30,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use((req, res, next) => {
+    // con res.locals.vardump lo que hacemos es que se pueda acceder a vardump en cualquier archivo de la aplicacion
+    res.locals.vardump = helpers.vardump;
+    // Siguiente middleware es como un continue o break
+    next();
+});
 
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', routes());
 
