@@ -44,6 +44,8 @@ var constants = {
         NEW_PROJECT_SUCCESS_MESSAGE: 'Proyecto creado satisfactoriamente',
         NEW_PROJECT_FAIL_MESSAGE: 'Lo sentimos algo fue erroneo',
         NEW_PROJECT_ERROR_NO_NAME_MESSAGE: 'Tienes que agregar un nombre al campo',
+        DELETE_PROJECT_SUCCESS_MESSAGE: 'Proyecto borrado correctamente',
+        DELETE_PROJECT_FAIL_MESSAGE: 'No hay ningun proyecto con esa url'
     },
     DATA_BASE_SETUP: {
         DATA_BASE_NAME: 'backEndUpTaskWithMySQL',

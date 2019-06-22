@@ -83,7 +83,7 @@ exports.projectByUrl = async (req, res) => {
         })
     } else {
         res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
-            ok : true,
+            ok : false,
             message: _constants.PROJECT_CONTROLLER.PROJECT_BY_URL_OR_ID_FAIL_MESSAGE,
             project
         })
@@ -108,7 +108,7 @@ exports.editForm = async (req, res) => {
         })
     } else {
         res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
-            ok : true,
+            ok : false,
             message: _constants.PROJECT_CONTROLLER.PROJECT_BY_URL_OR_ID_FAIL_MESSAGE,
             project
         })
@@ -150,7 +150,7 @@ exports.updateProject = async (req, res) => {
 
         if (project && typeof project !== 'undefined') {
             res.status(_constants.HTTP.CODE.ACCEPTED).json({
-                ok : false,
+                ok : true,
                 message: _constants.HTTP.MESSAGE.ACCEPTED,
                 projectToUpdate
             })
@@ -162,4 +162,44 @@ exports.updateProject = async (req, res) => {
             })
         }
     }
+};
+
+exports.deleteProject = async (req, res) => {
+
+    const project = await Projects.findOne({
+        where: {
+            url: req.params.url
+        }
+    });
+
+    const url = project.dataValues.url;
+
+    if (url && typeof url !== 'undefined') {
+        const result = await Projects.destroy({
+            where: {
+                url: url
+            }
+        });
+
+        if (result && typeof result !== 'undefined') {
+            res.status(_constants.HTTP.CODE.ACCEPTED).json({
+                ok : false,
+                message: _constants.PROJECT_CONTROLLER.DELETE_PROJECT_SUCCESS_MESSAGE,
+                project
+            })
+        } else {
+            res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
+                ok : false,
+                message: _constants.HTTP.MESSAGE.INTERNAL_SERVER_ERROR,
+                result
+            })
+        }
+    } else {
+        res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
+            ok : false,
+            message: _constants.PROJECT_CONTROLLER.DELETE_PROJECT_FAIL_MESSAGE,
+            result
+        })
+    }
+
 };
