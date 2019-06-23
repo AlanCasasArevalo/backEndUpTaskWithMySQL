@@ -67,7 +67,10 @@ var constants = {
         ID_TYPE_MAXI_NUMBER: 50,
         PROJECT_NAME_MAX_CHARACTERS: 30,
         PROJECT_URL_MAX_CHARACTERS: 40
-    }
+    },
+    TASKS_CONTROLLER: {
+        NEW_TASK_SUCCESS_MESSAGE: 'Nueva tarea creada',
+    },
 };
 
 module.exports = constants;
