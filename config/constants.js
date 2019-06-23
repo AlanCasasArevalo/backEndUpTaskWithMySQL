@@ -70,6 +70,7 @@ var constants = {
     },
     TASKS_CONTROLLER: {
         NEW_TASK_SUCCESS_MESSAGE: 'Nueva tarea creada',
+        NEW_TASK_NAME_IS_NECESSARY_MESSAGE: 'Tiene que dar un nombre a la tarea',
     },
 };
 
