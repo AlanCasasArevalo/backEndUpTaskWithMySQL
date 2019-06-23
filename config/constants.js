@@ -56,6 +56,17 @@ var constants = {
         DATA_BASE_PORT: '3306',
         DATA_BASE_OPERATORS_ALIASES: false,
         DATA_BASE_TIME_STAMP: false,
+    },
+    TASKS_MODEL: {
+        TASKS_DEFINE_NAME: 'Tasks',
+        ID_TYPE_MAXI_NUMBER: 50,
+        TASK_MAX_NAME_STRING: 150,
+        TASK_STATE_MAX: 3
+    },
+    PROJECT_MODEL: {
+        ID_TYPE_MAXI_NUMBER: 50,
+        PROJECT_NAME_MAX_CHARACTERS: 30,
+        PROJECT_URL_MAX_CHARACTERS: 40
     }
 };
 
