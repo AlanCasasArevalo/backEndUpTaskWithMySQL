@@ -15,12 +15,11 @@ exports.addNewTask = async (req, res, next) => {
             });
 
             if (project && typeof project !== 'undefined') {
-                console.log('', project.id);
-                const projectId = project.id;
+                const ProjectId = project.id;
                 const task = await Tasks.create({
                     name,
                     status,
-                    projectId
+                    ProjectId
                 });
 
                 if (task && typeof task !== 'undefined'){

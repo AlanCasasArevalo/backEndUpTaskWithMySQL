@@ -1,4 +1,5 @@
 const Projects = require('../models/Projects');
+const Tasks = require('../models/Tasks');
 
 exports.projectsHome = async (req, res) => {
     const projects = await Projects.findAll();
@@ -76,11 +77,23 @@ exports.projectByUrl = async (req, res) => {
     });
 
     if (project && typeof project !== 'undefined') {
-        res.status(_constants.HTTP.CODE.OK).json({
-            ok : true,
-            message: _constants.PROJECT_CONTROLLER.PROJECT_BY_URL_OR_ID_SUCCESS_MESSAGE,
-            project
-        })
+        const projectId = project.id;
+
+        if (projectId && typeof projectId !== 'undefined'){
+            const tasks = await Tasks.findAll({
+                where: {
+                    ProjectId: project.id
+                }
+            });
+
+            res.status(_constants.HTTP.CODE.OK).json({
+                ok : true,
+                message: _constants.PROJECT_CONTROLLER.PROJECT_BY_URL_OR_ID_SUCCESS_MESSAGE,
+                project,
+                tasks
+            })
+        }
+
     } else {
         res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
             ok : false,
