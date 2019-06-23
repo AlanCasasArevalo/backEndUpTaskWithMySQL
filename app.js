@@ -7,8 +7,9 @@ const logger = require('morgan');
 const expressValidator = require('express-validator');
 const helpers = require('./helpers/helper');
 
-
 require('./models/Projects');
+require('./models/Tasks');
+
 const routes = require('./routes');
 const db = require('./config/db');
 db.sync()
