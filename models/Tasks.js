@@ -1,6 +1,7 @@
 const sequelize = require('sequelize');
 const db = require('../config/db');
 const _constants = require('../config/constants');
+const projects = require('../models/Projects');
 
 const Tasks = db.define(_constants.TASKS_MODEL.TASKS_DEFINE_NAME, {
     id: {
@@ -8,9 +9,11 @@ const Tasks = db.define(_constants.TASKS_MODEL.TASKS_DEFINE_NAME, {
         primaryKey: true,
         autoIncrement: true
     },
-    task: sequelize.STRING(_constants.TASKS_MODEL.TASK_MAX_NAME_STRING),
-    state: sequelize.INTEGER(_constants.TASKS_MODEL.TASK_STATE_MAX)
+    name: sequelize.STRING(_constants.TASKS_MODEL.TASK_MAX_NAME_STRING),
+    status: sequelize.INTEGER(_constants.TASKS_MODEL.TASK_STATE_MAX)
 });
+
+Tasks.belongsTo(projects);
 
 module.exports = Tasks;
 
