@@ -5,6 +5,8 @@ const projectsController = require('../controllers/projectsController');
 const tasksController = require('../controllers/tasksController');
 
 module.exports = function () {
+
+  // PROJECT
   router.get('/', projectsController.projectsHome );
   router.get('/new-projects', projectsController.projectsNewProjects );
   router.post('/new-projects',
@@ -25,8 +27,13 @@ module.exports = function () {
       projectsController.deleteProject
   );
 
+  // TASKS
   router.post('/projects/:url',
       tasksController.addNewTask
+  );
+
+  router.patch('/task/:id',
+      tasksController.updateTask
   );
 
   return router
