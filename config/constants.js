@@ -71,14 +71,21 @@ var constants = {
     USER_MODEL: {
         USERS_DEFINE_NAME: 'Users',
         ID_TYPE_MAXI_NUMBER: 50,
-        USER_NAME_MAX_CHARACTERS: 30,
-        USER_PASSWORD_MAX_CHARACTERS: 30,
-        USER_URL_MAX_CHARACTERS: 40
+        USER_EMAIL_MAX_CHARACTERS: 30,
+        USER_PASSWORD_MAX_CHARACTERS: 80,
+        USER_BCRYPT_SALT: 10
     },
     TASKS_CONTROLLER: {
         NEW_TASK_SUCCESS_MESSAGE: 'Nueva tarea creada',
         NEW_TASK_NAME_IS_NECESSARY_MESSAGE: 'Tiene que dar un nombre a la tarea',
         UPDATE_TASK_NOT_CHANGE_MESSAGE: 'No hay cambios para actualizar',
+    },
+    USERS_CONTROLLER: {
+        NEW_USER_ERROR_NO_EMAIL_OR_PASSWORD_MESSAGE: 'Tienes que agregar un email o un password correctos',
+        USER_EMAIL_FAIL_NO_VALID_EMAIL: 'Agrega un correo Valido',
+        USER_EMAIL_FAIL_NO_EMPTY_EMAIL: 'El e-mail no puede ir vacio',
+        USER_FAIL_USER_ALREADY_REGISTER: 'Usuario ya registrado.',
+        USER_FAIL_NO_EMPTY_PASSWORD: 'El password no puede ir vacio',
     },
 };
 

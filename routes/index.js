@@ -42,7 +42,7 @@ module.exports = function () {
   );
 
   //USERS
-  router.get('/create-account',
+  router.post('/create-account',
       userController.createNewUserAccount
   );
 
