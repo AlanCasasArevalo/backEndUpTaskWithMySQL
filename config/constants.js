@@ -68,6 +68,13 @@ var constants = {
         PROJECT_NAME_MAX_CHARACTERS: 30,
         PROJECT_URL_MAX_CHARACTERS: 40
     },
+    USER_MODEL: {
+        USERS_DEFINE_NAME: 'Users',
+        ID_TYPE_MAXI_NUMBER: 50,
+        USER_NAME_MAX_CHARACTERS: 30,
+        USER_PASSWORD_MAX_CHARACTERS: 30,
+        USER_URL_MAX_CHARACTERS: 40
+    },
     TASKS_CONTROLLER: {
         NEW_TASK_SUCCESS_MESSAGE: 'Nueva tarea creada',
         NEW_TASK_NAME_IS_NECESSARY_MESSAGE: 'Tiene que dar un nombre a la tarea',

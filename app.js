@@ -9,6 +9,7 @@ const helpers = require('./helpers/helper');
 
 require('./models/Projects');
 require('./models/Tasks');
+require('./models/Users');
 
 const routes = require('./routes');
 const db = require('./config/db');

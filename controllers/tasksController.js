@@ -91,7 +91,7 @@ exports.updateTask = async (req, res) => {
 
                 if (taskUpdated && typeof taskUpdated !== 'undefined') {
                     res.status(_constants.HTTP.CODE.ACCEPTED).json({
-                        ok : false,
+                        ok : true,
                         message: _constants.HTTP.MESSAGE.ACCEPTED,
                         taskUpdated
                     })
@@ -120,4 +120,47 @@ exports.updateTask = async (req, res) => {
     }
 
 
+};
+
+exports.deleteTask = async (req, res) => {
+
+    const taskId = req.params.id;
+
+    if (taskId && typeof taskId !== 'undefined') {
+        const task = await Tasks.findOne({
+            where: {
+                id: taskId
+            }
+        });
+
+        if (task && typeof task !== 'undefined') {
+            const taskDeleted = await task.destroy();
+
+            if (taskDeleted && typeof taskDeleted !== 'undefined') {
+                res.status(_constants.HTTP.CODE.ACCEPTED).json({
+                    ok : true,
+                    message: _constants.HTTP.MESSAGE.ACCEPTED,
+                    taskDeleted
+                })
+            } else {
+                res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
+                    ok : false,
+                    message: _constants.HTTP.CODE.INTERNAL_SERVER_ERROR,
+                })
+            }
+
+        } else {
+            res.status(_constants.HTTP.CODE.NOT_FOUND)
+                .json({
+                    ok : false,
+                    message: _constants.HTTP.MESSAGE.NOT_FOUND,
+                })
+        }
+    } else {
+        res.status(_constants.HTTP.CODE.BAD_REQUEST)
+            .json({
+                ok : false,
+                message: _constants.HTTP.MESSAGE.BAD_REQUEST,
+            })
+    }
 };
