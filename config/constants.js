@@ -87,6 +87,16 @@ var constants = {
         USER_FAIL_USER_ALREADY_REGISTER: 'Usuario ya registrado.',
         USER_FAIL_NO_EMPTY_PASSWORD: 'El password no puede ir vacio',
     },
+    MAIN_INDEX: {
+        SESSION_SECRET_SEED: 'SESSION_SECRET_SEED'
+    },
+    PASSPORT_LITERALS: {
+        USER_NAME_FIELD: 'email',
+        PASSWORD_FIELD: 'password',
+        DONE_MESSAGE_CALLBACK_USER_DOES_NOT_EXISTS: 'Esta cuenta no existe',
+        DONE_MESSAGE_CALLBACK_INCORRECT_PASSWORD: 'La contraseña no es correcta.',
+    }
+
 };
 
 module.exports = constants;
