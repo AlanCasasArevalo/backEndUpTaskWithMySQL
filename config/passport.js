@@ -7,18 +7,17 @@ const Users = require('../models/Users');
 
 passport.use(
     new LocalStrategy(
-        // Por defecto passport espera usuario y password
         {
             usernameField: _constants.PASSPORT_LITERALS.USER_NAME_FIELD,
             passwordField: _constants.PASSPORT_LITERALS.PASSWORD_FIELD
         },
         async (email, password, done) => {
             try {
-                const user = await Users.find({
+                const user = await Users.findOne({
                     where: {
                         email
                     }
-                })
+                });
                 // El usuario existe pero el password no coincide
                 if (!user.passwordVerification(password)) {
                     return done(null, false, {

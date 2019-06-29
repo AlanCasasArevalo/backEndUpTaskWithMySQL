@@ -1,8 +1,9 @@
 const User = require('../models/Users');
+const passport = require('passport');
+
 
 
 exports.createNewUserAccount = async (req, res) => {
-
     const email = req.body.email.trim().toLowerCase();
     const password = req.body.password;
 
@@ -15,18 +16,17 @@ exports.createNewUserAccount = async (req, res) => {
             });
 
             res.status(_constants.HTTP.CODE.CREATION_OK).json({
-                ok : true,
+                ok: true,
                 message: _constants.HTTP.MESSAGE.CREATION_OK,
                 user
             })
 
         } else {
             res.status(_constants.HTTP.CODE.BAD_REQUEST).json({
-                ok : false,
+                ok: false,
                 message: _constants.USERS_CONTROLLER.NEW_USER_ERROR_NO_EMAIL_OR_PASSWORD_MESSAGE,
             })
         }
-
     }
-
 };
+
