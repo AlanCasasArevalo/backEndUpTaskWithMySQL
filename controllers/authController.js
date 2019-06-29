@@ -37,3 +37,12 @@ exports.authenticatedUser = async (req, res, next) => {
         })
     }
 };
+
+exports.closeSession = async (req, res) => {
+    req.session.destroy( () => {
+        res.status(_constants.HTTP.CODE.OK).json({
+            ok: true,
+            message: _constants.HTTP.MESSAGE.OK,
+        });
+    });
+};

@@ -68,5 +68,10 @@ module.exports = function () {
       authController.userAuthentication
   );
 
+  router.post('/logout',
+      authController.closeSession
+  );
+
+
   return router
 };
