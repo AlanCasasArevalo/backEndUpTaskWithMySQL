@@ -46,6 +46,7 @@ app.use(passport.session());
 app.use((req, res, next) => {
     // con res.locals.vardump lo que hacemos es que se pueda acceder a vardump en cualquier archivo de la aplicacion
     res.locals.vardump = helpers.vardump;
+    res.locals.user = {...req.user} || null;
     // Siguiente middleware es como un continue o break
     next();
 });

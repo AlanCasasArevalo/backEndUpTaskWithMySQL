@@ -46,9 +46,13 @@ exports.newProject = async (req, res) => {
             errors
         })
     } else {
+
+        const UserId = res.locals.user.id;
+
         // No errores insertar en la base de datos
         const project = await Projects.create({
-            name
+            name,
+            UserId
         });
 
         if (project && typeof project !== 'undefined') {
