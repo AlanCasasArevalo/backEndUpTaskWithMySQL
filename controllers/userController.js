@@ -1,4 +1,4 @@
-const User = require('../models/Users');
+const Users = require('../models/Users');
 const passport = require('passport');
 
 
@@ -10,16 +10,33 @@ exports.createNewUserAccount = async (req, res) => {
     if (email && typeof email !== 'undefined' && password && typeof password !== 'undefined') {
         if (email.length > 6 || password.length > 5) {
 
-            const user = await User.create({
-                email,
-                password
-            });
+            try {
+                const user = await Users.create({
+                    email,
+                    password
+                });
 
-            res.status(_constants.HTTP.CODE.CREATION_OK).json({
-                ok: true,
-                message: _constants.HTTP.MESSAGE.CREATION_OK,
-                user
-            })
+                if (user && typeof user !== 'undefined') {
+                    res.status(_constants.HTTP.CODE.CREATION_OK).json({
+                        ok: true,
+                        message: _constants.HTTP.MESSAGE.CREATION_OK,
+                        user
+                    })
+                } else {
+                    res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
+                        ok: false,
+                        message: _constants.HTTP.MESSAGE.INTERNAL_SERVER_ERROR,
+                    })
+                }
+
+            } catch (errors) {
+                    res.status(_constants.HTTP.CODE.INTERNAL_SERVER_ERROR).json({
+                        ok: false,
+                        message: errors,
+                    })
+            }
+
+
 
         } else {
             res.status(_constants.HTTP.CODE.BAD_REQUEST).json({
