@@ -64,12 +64,20 @@ module.exports = function () {
   );
 
   //AUTH
-  router.post(_constants.AUTHENTICATION_CONTROLLER.POST_AUTHENTICATION_ROUTE,
+  router.post('/login',
       authController.userAuthentication
   );
 
   router.post('/logout',
       authController.closeSession
+  );
+
+  router.post('/reset-account',
+      authController.toSendToken
+  );
+
+  router.get('/reset-account/:token',
+      authController.resetPassword
   );
 
 
